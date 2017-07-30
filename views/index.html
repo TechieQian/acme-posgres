@@ -1,0 +1,22 @@
+
+    <h1> Acme Products Categories</h1>
+
+    {% extends 'layout.html' %}
+
+    {% block content%}
+
+    <h2> Home </h2>
+
+    <div class="form-group well">
+      <form action="/categories" method="POST">
+        <input name="category-name" class="form-control input-lg" placeholder="category name">
+        <br>
+        <input type="submit" class="btn btn-primary" value="Submit">
+      </form>
+    </div>
+
+    <script>
+      $("li:contains('Home')").toggleClass('active')
+    </script>
+
+    {% endblock %}
