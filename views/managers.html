@@ -1,0 +1,19 @@
+
+  {% block header %}
+  <h1>Users</h1>
+  {% endblock %}
+
+  {% extends 'layout.html' %}
+
+  {% block content %}
+    {% for user in users %}
+      <li class="list-group-item">{{user.name}}<br>
+      <form action='/users/managers/{{user.id}}?_method=PUT' method='POST'><input type='submit' class='btn btn-warning' value='Demote'></form>
+      </li>
+    {% endfor %}
+
+    <script>
+      $('li').filter(function() {console.log( $(this).text()); return $(this).text() == 'Managers' }).toggleClass('active')
+    </script>
+
+  {% endblock %}

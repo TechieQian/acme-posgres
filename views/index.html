@@ -1,15 +1,14 @@
 
-    <h1> Acme Products Categories</h1>
-
     {% extends 'layout.html' %}
 
     {% block content%}
 
-    <h2> Home </h2>
-
     <div class="form-group well">
-      <form action="/categories" method="POST">
-        <input name="category-name" class="form-control input-lg" placeholder="category name">
+      <form action="/users" method="POST">
+        <input name="name" class="form-control input-lg" placeholder="user name">
+        <br>
+        <label for="manager">Is Manager</label>
+        <input type="checkbox" name="manager" value='true'>
         <br>
         <input type="submit" class="btn btn-primary" value="Submit">
       </form>

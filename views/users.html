@@ -1,30 +1,26 @@
 
   {% block header %}
-  <h1>{{name}}</h1>
+  <h1>Users</h1>
   {% endblock %}
 
   {% extends 'layout.html' %}
 
   {% block content %}
-    <div class="form-group well">
-      <form action="/categories/{{name}}/products" method="POST">
-        <input name="name" class="form-control input-lg" placeholder="product name">
+  
+    {% for user in users %}
+      <li class="list-group-item">{{user.name}}
+      {% if not user.ismanager %}
         <br>
-        <input type="submit" class="btn btn-primary" value="Submit">
-      </form>
-    </div>
-
-    {% for product in products %}
-      <li class="list-group-item">{{product.name}}<br>
-      <form action='/categories/{{name}}/{{product.id}}?_method=DELETE' method='POST'><input type='submit' class='btn btn-warning' value='Delete'></form>
+        <form action='/users/{{user.id}}?_method=PUT' method='POST'><input type='submit' class='btn btn-warning' value='Make Manager'></form>
+        <form action='/users/{{user.id}}?_method=DELETE' method='POST'><input type='submit' class='btn btn-warning' value='Delete'></form>
+      {% else %}
+        <span class="label label-default">manager</span>
+      {% endif %}
       </li>
     {% endfor %}
 
-    <br>
-    <form action='/categories/{{name}}?_method=DELETE' method='POST'><input type='submit' class='btn btn-danger' value='Delete Category'></form>
-
     <script>
-      $('li').filter(function() {console.log( $(this).text()); return $(this).text() == '{{name}}' }).toggleClass('active')
+      $('li').filter(function() {console.log( $(this).text()); return $(this).text() == 'Users' }).toggleClass('active')
     </script>
 
   {% endblock %}
