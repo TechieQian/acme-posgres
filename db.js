@@ -1,10 +1,8 @@
 var pg = require('pg');
-var postgresUrl = 'postgres://localhost/acmedb';
-var client = new pg.Client(postgresUrl);
+//var postgresUrl = 'postgres://localhost/acmedb';
+//var client = new pg.Client(postgresUrl);
 
-//console.log(process.env.DATABASE_URL)
-
-//var client = new pg.Client(process.env.DATABASE_URL);
+var client = new pg.Client(process.env.DATABASE_URL);
 
 client.connect();
 
